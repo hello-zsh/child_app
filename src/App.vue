@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ComButton class="com-wrapper"/>
+    <ComChart class="com-wrapper"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ComButton from './components/custom-button.vue'
+import ComChart from './components/custom-chart.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ComButton,
+    ComChart,
+  },
+  data() {
+    return {
+
+    };
+  },
+};
 </script>
 
-<style>
+<style scoped lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  padding: 16px; 
+}
+.com-wrapper {
+  margin-bottom: 16px;
 }
 </style>
