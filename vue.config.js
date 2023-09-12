@@ -1,25 +1,22 @@
 const { defineConfig } = require('@vue/cli-service')
+const { name } = require('./package.json')
 
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: process.env.NODE_ENV === 'production' ? '/child_app/' : '/',
-  chainWebpack: config => {
-    config.plugin('module-federation-plugin')
-      .use(require('webpack').container.ModuleFederationPlugin, [{
-        name: "childApp", // 模块名称
-        filename: "remoteEntry.js",
-        exposes: {
-          './custom-button': '@/components/custom-button',
-          './custom-chart': '@/components/custom-chart',
-        },
-        shared: {
-          'view-design': {
-            singleton: true,
-          },
-          'echarts': {
-            singleton: true,
-          }
-        }
-      }])
+  configureWebpack: {
+    output: {
+      library: {
+        name:  `${name}-[name]`,
+        type: 'umd',
+      },
+      chunkLoadingGlobal: `webpackJsonp_${name}`,
+    },
+  },
+  devServer: {
+    port: 8889,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   }
 })

@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <ComButton class="com-wrapper"/>
-    <ComChart class="com-wrapper"/>
+    <router-view/>
+    <!-- <ComButton class="com-wrapper"/>
+    <ComChart class="com-wrapper"/> -->
   </div>
 </template>
 
 <script>
-import ComButton from './components/custom-button.vue'
-import ComChart from './components/custom-chart.vue'
+// import ComButton from './components/custom-button.vue'
+// import ComChart from './components/custom-chart.vue'
 
 export default {
-  components: {
-    ComButton,
-    ComChart,
-  },
+  // components: {
+  //   ComButton,
+  //   ComChart,
+  // },
   data() {
     return {
 
@@ -28,7 +29,7 @@ export default {
   height: 100%;
   padding: 16px; 
 }
-.com-wrapper {
-  margin-bottom: 16px;
-}
+// .com-wrapper {
+//   margin-bottom: 16px;
+// }
 </style>
